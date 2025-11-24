@@ -212,7 +212,13 @@ const Dashboard = () => {
         label: 'Last Month',
         data: [3.2, 3.5, 3.8, 3.6, 3.9, 4.1],
         borderColor: '#3b82f6',
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+        backgroundColor: (context) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+          gradient.addColorStop(0, 'rgba(59, 130, 246, 0.5)');
+          gradient.addColorStop(1, 'rgba(59, 130, 246, 0.0)');
+          return gradient;
+        },
         borderWidth: 3,
         fill: true,
         tension: 0.4,
@@ -221,7 +227,13 @@ const Dashboard = () => {
         label: 'This Month',
         data: [3.8, 4.0, 4.2, 4.5, 4.3, 4.6],
         borderColor: '#10b981',
-        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+        backgroundColor: (context) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+          gradient.addColorStop(0, 'rgba(16, 185, 129, 0.5)');
+          gradient.addColorStop(1, 'rgba(16, 185, 129, 0.0)');
+          return gradient;
+        },
         borderWidth: 3,
         fill: true,
         tension: 0.4,
@@ -310,7 +322,7 @@ const Dashboard = () => {
           return gradient;
         },
         borderRadius: 8,
-        barThickness: 40,
+        barThickness: 100,
       }
     ]
   };
